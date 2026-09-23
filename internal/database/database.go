@@ -2,13 +2,15 @@ package database
 
 import (
 	"context"
+	"crypto/tls"
+	"crypto/x509"
 	"database/sql"
 	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
 
-	_ "github.com/go-sql-driver/mysql"
+	"github.com/go-sql-driver/mysql"
 	_ "modernc.org/sqlite"
 )
 
@@ -26,6 +28,9 @@ func Open(driver, source string) (*sql.DB, error) {
 		return nil, fmt.Errorf("unsupported database driver %q", driver)
 	}
 	if driver == "mysql" {
+		if err := registerMySQLTLS(); err != nil {
+			return nil, err
+		}
 		source = addMySQLOption(source, "multiStatements=true")
 		source = addMySQLOption(source, "parseTime=true")
 	}
@@ -39,6 +44,21 @@ func Open(driver, source string) (*sql.DB, error) {
 		return nil, fmt.Errorf("ping database: %w", err)
 	}
 	return db, nil
+}
+
+func registerMySQLTLS() error {
+	certificate := strings.TrimSpace(os.Getenv("SOWP_DATABASE_CA_CERT"))
+	if certificate == "" {
+		return fmt.Errorf("SOWP_DATABASE_CA_CERT is required for MySQL TLS")
+	}
+	pool := x509.NewCertPool()
+	if !pool.AppendCertsFromPEM([]byte(certificate)) {
+		return fmt.Errorf("could not parse SOWP_DATABASE_CA_CERT")
+	}
+	if err := mysql.RegisterTLSConfig("aiven", &tls.Config{RootCAs: pool, MinVersion: tls.VersionTLS12, ServerName: os.Getenv("SOWP_DATABASE_TLS_SERVER_NAME")}); err != nil {
+		return fmt.Errorf("register MySQL TLS: %w", err)
+	}
+	return nil
 }
 
 func addMySQLOption(source, option string) string {
