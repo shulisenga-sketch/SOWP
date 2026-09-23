@@ -1,0 +1,10 @@
+.profile-menu { position: relative; }
+.profile-trigger { border: 1px solid transparent; border-radius: 24px; padding: 4px 8px 4px 4px; background: transparent; transition: background .2s, border-color .2s; }
+.profile-trigger:hover, .profile-trigger[aria-expanded="true"] { border-color: var(--line); background: rgba(255, 254, 250, .8); }
+.profile-chevron { margin-left: 2px; color: var(--muted); font-size: 14px; }
+.profile-dropdown { position: absolute; top: calc(100% + 10px); right: 0; z-index: 25; display: grid; min-width: 220px; gap: 7px; padding: 15px; border: 1px solid var(--line); background: var(--white); box-shadow: 0 18px 38px rgba(24, 33, 43, .14); animation: profile-drop .18s ease both; }
+.profile-label { color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: 1.3px; }
+.profile-dropdown strong { overflow: hidden; color: var(--ink); font-size: 12px; text-overflow: ellipsis; }
+.profile-logout { display: flex; justify-content: space-between; margin-top: 7px; border: 0; border-top: 1px solid var(--line); background: transparent; color: var(--coral-dark); padding: 12px 0 0; font-size: 12px; font-weight: 700; text-align: left; }
+@keyframes profile-drop { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 560px) { .profile-trigger { padding-right: 4px; }.profile-trigger #user-name, .profile-chevron { display: none; }.profile-dropdown { right: -5px; } }

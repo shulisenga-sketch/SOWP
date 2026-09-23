@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="sw">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SOWP | Service Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/app.css?v=2">
+  <link rel="stylesheet" href="/static/css/overview.css?v=2">
+  <link rel="stylesheet" href="/static/css/orders.css?v=2">
+  <link rel="stylesheet" href="/static/css/order-modal.css?v=2">
+  <link rel="stylesheet" href="/static/css/profile-menu.css?v=2">
+  <link rel="stylesheet" href="/static/css/admin-preview.css?v=2">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="public-home" id="home-view">
+    <nav class="home-nav"><div class="sidebar-brand"><span class="brand-mark small">S</span><span>SOWP</span></div><button class="home-login" data-home-action="login">Ingia</button></nav>
+    <section class="home-hero"><div class="home-hero-copy"><p class="eyebrow">SERVICE ORDERING WEB PORTAL</p><h1>Kazi yako,<br><em>imepangwa.</em></h1><p>Agiza huduma, tuma nyaraka, fuatilia maendeleo na pokea kazi yako sehemu moja.</p><div class="home-actions"><button class="primary-button" data-home-action="register">Fungua akaunti <span>→</span></button><button class="home-secondary" data-home-action="login">Nina akaunti tayari</button></div></div><div class="home-hero-art"><span class="hero-art-mark">S</span><span class="hero-art-caption">SOWP<br>CARE</span></div></section>
+    <section class="home-announcements"><div class="home-section-heading"><p class="eyebrow">KARIBU SOWP</p><h2>Huduma zetu zinavyofanya kazi</h2></div><div class="home-feature-grid"><article class="home-feature"><span class="feature-number">01</span><h3>Chagua huduma</h3><p>Eleza kazi unayohitaji na utaona nyaraka zinazotakiwa kuambatanishwa.</p></article><article class="home-feature"><span class="feature-number">02</span><h3>Fuatilia ombi</h3><p>Wasiliana na timu kwenye order yako na uone hatua ya kazi yako kila wakati.</p></article><article class="home-feature"><span class="feature-number">03</span><h3>Pokea kazi yako</h3><p>Baada ya malipo kuthibitishwa, deliverable yako itakuwa tayari kupakuliwa kwa usalama.</p></article></div></section>
+    <section class="home-notice"><span class="notice-icon">✦</span><div><strong>Huduma zinazopatikana</strong><p>Field Report, Research Proposal, Full Research, HESLB, maombi ya vyuo na zaidi.</p></div><button class="text-button" data-home-action="register">Anza sasa →</button></section>
+  </main>
+
+  <main class="portal hidden" id="auth-view">
+    <section class="auth-intro">
+      <div class="brand-mark">S</div>
+      <p class="eyebrow">SERVICE ORDERING WEB PORTAL</p>
+      <h1>Kazi zako,<br><em>zimepangwa.</em></h1>
+      <p class="intro-copy">Agiza huduma, fuatilia hatua, wasiliana na timu, na pokea kazi yako sehemu moja.</p>
+      <div class="trust-row"><span class="trust-dot"></span> Manual payment verification &nbsp;·&nbsp; Secure file delivery</div>
+    </section>
+
+    <section class="auth-card">
+      <div class="auth-tabs">
+        <button class="tab-button active" data-auth-tab="login">Ingia</button>
+        <button class="tab-button" data-auth-tab="register">Fungua akaunti</button>
+      </div>
+      <form id="login-form" class="auth-form">
+        <div><label for="login-email">Email</label><input id="login-email" name="email" type="email" autocomplete="email" required placeholder="jina@mfano.com"></div>
+        <div><label for="login-password">Password</label><input id="login-password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••"></div>
+        <button class="primary-button" type="submit">Ingia kwenye portal <span>→</span></button>
+      </form>
+      <form id="register-form" class="auth-form hidden">
+        <div><label for="register-name">Jina kamili</label><input id="register-name" name="full_name" required placeholder="Jina lako kamili"></div>
+        <div><label for="register-email">Email</label><input id="register-email" name="email" type="email" autocomplete="email" required placeholder="jina@mfano.com"></div>
+        <div><label for="register-password">Password</label><input id="register-password" name="password" type="password" minlength="8" autocomplete="new-password" required placeholder="Angalau characters 8"></div>
+        <button class="primary-button" type="submit">Tengeneza akaunti <span>→</span></button>
+      </form>
+      <p class="form-message" id="auth-message"></p>
+    </section>
+  </main>
+
+  <main class="app-shell hidden" id="app-view">
+    <aside class="sidebar">
+      <div class="sidebar-brand"><span class="brand-mark small">S</span><span>SOWP</span></div>
+      <p class="sidebar-label">MENU</p>
+      <nav>
+        <button class="nav-item active" data-view="overview"><span>◈</span> Overview</button>
+        <button class="nav-item customer-only" data-view="orders"><span>▣</span> Maombi yangu</button>
+        <button class="nav-item admin-only hidden" data-view="admin"><span>◫</span> Admin desk</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="help-note"><strong>Unahitaji msaada?</strong><span>Tuma ujumbe kwenye order yako.</span></div></div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <div><p class="eyebrow" id="page-kicker">CUSTOMER PORTAL</p><h2 id="page-title">Karibu kwenye portal</h2></div>
+        <div class="topbar-actions"><button class="notification-button" id="notification-button" title="Notifications"><span>♢</span><b id="notification-count" class="notification-count hidden">0</b></button><div class="profile-menu"><button class="user-chip profile-trigger" id="profile-trigger" aria-expanded="false"><span class="avatar" id="user-avatar">U</span><span id="user-name">User</span><span class="profile-chevron">⌄</span></button><div class="profile-dropdown hidden" id="profile-dropdown"><span class="profile-label">SIGNED IN AS</span><strong id="profile-email">User</strong><button id="logout-button" class="profile-logout">Toka kwenye portal <span>↗</span></button></div></div></div>
+      </header>
+      <div class="toast" id="toast"></div>
+
+      <section class="view" id="overview-view">
+        <div class="hero-strip"><div><p class="eyebrow">YOUR WORKSPACE</p><h1>Weka kazi yako <em>mikononi mwetu.</em></h1><p>Fuatilia ombi lako kutoka request hadi delivery.</p></div><div class="hero-stamp"><span>✦</span><small>SOWP<br>CARE</small></div></div>
+        <div class="metric-grid"><article class="metric-card"><span>Maombi yote</span><strong id="metric-total">0</strong><small>orders ulizotuma</small></article><article class="metric-card accent"><span>Zinazoendelea</span><strong id="metric-active">0</strong><small>zinahitaji uangalizi</small></article><article class="metric-card"><span>Zimekamilika</span><strong id="metric-completed">0</strong><small>ready to download</small></article></div>
+        <div class="overview-grid customer-only"><section class="panel chart-panel"><div class="panel-heading"><div><p class="eyebrow">ORDER PULSE</p><h3>Hali ya maombi</h3></div><span class="chart-total" id="chart-total">0 total</span></div><div class="status-chart" id="status-chart"><div class="chart-empty">Takwimu zitaonekana baada ya kutuma ombi.</div></div><div class="chart-legend"><span><i class="legend-dot coral"></i>Inaendelea</span><span><i class="legend-dot teal"></i>Completed</span><span><i class="legend-dot gold"></i>Pending</span></div></section><section class="panel recent-panel"><div class="panel-heading"><div><p class="eyebrow">ACTIVITY</p><h3>Hivi karibuni</h3></div><button class="text-button" data-view-target="orders">Angalia yote →</button></div><div id="recent-orders" class="order-list compact-list empty-state">Bado hujatuma ombi.</div></section><section class="panel quick-panel"><div><p class="eyebrow">START HERE</p><h3>Agiza huduma mpya</h3><p>Eleza unachohitaji, kisha timu yetu itakujibu.</p></div><button class="primary-button" data-view-target="orders">Anza ombi <span>→</span></button></section></div>
+      </section>
+
+      <section class="view hidden" id="orders-view">
+        <div class="section-heading"><div><p class="eyebrow">CUSTOMER WORKSPACE</p><h1>Maombi yako</h1></div><button class="primary-button compact" id="new-order-button">+ Ombi jipya</button></div>
+        <div class="orders-layout"><section class="panel order-table-panel"><div class="filter-row"><button class="filter active" data-filter="all">Yote</button><button class="filter" data-filter="pending">Pending</button><button class="filter" data-filter="in_progress">Inaendelea</button><button class="filter" data-filter="completed">Completed</button></div><div id="orders-list" class="order-list empty-state">Inapakia...</div></section><section class="panel detail-panel hidden" id="order-detail"><button class="back-button" id="close-detail">← Rudi</button><div id="detail-content"></div></section></div>
+        <div class="modal-backdrop hidden" id="new-order-modal"><section class="panel new-order-panel" id="new-order-panel"><div class="panel-heading"><div><p class="eyebrow">NEW REQUEST</p><h3>Tuambie unachohitaji</h3><p class="modal-subtitle">Timu itakujibu baada ya kukagua ombi lako.</p></div><button class="icon-button" id="close-new-order" aria-label="Funga">×</button></div><form id="order-form" class="portal-form"><label>Huduma<select id="service-select" required></select></label><div id="service-requirements" class="service-requirements hidden"></div><label>Maelezo ya kazi<textarea id="order-description" rows="5" required placeholder="Eleza kwa kina unachohitaji..."></textarea></label><label>Supporting documents <span class="optional">PDF, DOCX, PNG, JPG · max 5 files · 15MB each</span><input id="order-file" type="file" accept=".pdf,.docx,.png,.jpg,.jpeg" multiple></label><button class="primary-button" type="submit">Tuma ombi <span>→</span></button></form></section></div>
+      </section>
+
+      <section class="view hidden" id="admin-view">
+        <div class="section-heading"><div><p class="eyebrow">ADMIN DESK</p><h1>Control room</h1></div><button class="text-button" id="refresh-admin">↻ Refresh data</button></div>
+        <div class="metric-grid admin-metrics"><article class="metric-card"><span>Orders zote</span><strong id="admin-total">0</strong><small>all time</small></article><article class="metric-card accent"><span>Active orders</span><strong id="admin-active">0</strong><small>zinazoendelea</small></article><article class="metric-card"><span>Payment review</span><strong id="admin-verification">0</strong><small>proofs za kuhakiki</small></article><article class="metric-card"><span>Pending orders</span><strong id="admin-pending">0</strong><small>hazijaanza</small></article><article class="metric-card"><span>Completed</span><strong id="admin-completed">0</strong><small>delivered work</small></article><article class="metric-card"><span>Income verified</span><strong id="admin-revenue">TZS 0</strong><small>manual approvals</small></article></div>
+        <div class="admin-insights"><section class="panel admin-chart-panel"><div class="panel-heading"><div><p class="eyebrow">ORDER HEALTH</p><h3>Hali ya orders</h3></div><span class="chart-total">Live snapshot</span></div><div id="admin-status-chart" class="admin-status-chart"></div><div class="admin-chart-legend"><span><i class="legend-dot gold"></i>Pending</span><span><i class="legend-dot coral"></i>Inaendelea</span><span><i class="legend-dot teal"></i>Payment review</span><span><i class="legend-dot green"></i>Completed</span></div></section><section class="panel admin-activity-panel"><div class="panel-heading"><div><p class="eyebrow">RECENT ACTIVITY</p><h3>Latest orders</h3></div></div><div id="admin-recent-activity" class="admin-recent-activity"></div></section></div>
+        <div class="admin-grid"><section class="panel"><div class="panel-heading"><div><p class="eyebrow">PAYMENT ACCOUNTS</p><h3>Lipa Namba</h3></div></div><form id="method-form" class="inline-form"><input id="method-name" placeholder="M-Pesa" required><input id="method-account-name" placeholder="Jina la akaunti" required><input id="method-account-number" placeholder="0755..." required><input id="method-instructions" placeholder="Maelekezo (optional)"><button class="primary-button compact" type="submit">+ Ongeza</button></form><div id="methods-list" class="method-list"></div></section><section class="panel"><div class="panel-heading"><div><p class="eyebrow">INBOX</p><h3>Orders za customer</h3></div><input id="admin-order-search" class="admin-order-search" type="search" placeholder="Tafuta customer, order au service" aria-label="Tafuta order"></div><div class="admin-order-filters"><button class="filter admin-order-filter active" data-admin-filter="all">Zote</button><button class="filter admin-order-filter" data-admin-filter="action">Zinahitaji action</button><button class="filter admin-order-filter" data-admin-filter="completed">Kazi zimetumwa</button></div><div id="admin-orders-list" class="order-list empty-state">Inapakia...</div></section></div>
+        <section class="panel admin-preview hidden" id="admin-order-preview"><div class="panel-heading"><div><p class="eyebrow">ORDER PREVIEW</p><h3 id="admin-preview-title">Order detail</h3><p class="order-meta" id="admin-preview-meta"></p></div><button class="icon-button" id="close-admin-preview">×</button></div><div id="admin-preview-content"></div><form id="deliverable-form" class="deliverable-form hidden"><label>Upload kazi iliyokamilika <span class="optional">PDF, DOCX, PNG, JPG · max 15MB</span><input id="deliverable-file" name="file" type="file" accept=".pdf,.docx,.png,.jpg,.jpeg" required></label><button class="primary-button compact" type="submit">Upload deliverable <span>↑</span></button></form></section>
+      </section>
+    </section>
+  </main>
+  <script src="/static/js/app.js?v=12"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+*.db
+*.db-shm
+*.db-wal
+.env
+/storage/supporting/*
+/storage/payment-proofs/*
+/storage/deliverables/*
+!/storage/supporting/.gitkeep
+!/storage/payment-proofs/.gitkeep
+!/storage/deliverables/.gitkeep
